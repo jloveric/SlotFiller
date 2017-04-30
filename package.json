@@ -1,0 +1,23 @@
+{
+  "name": "slot-filler",
+  "version": "1.0.0",
+  "description": "Fill in the slots in a phrase template given a matching phrase.",
+  "main": "SlotFiller.js",
+  "scripts": {
+    "test": "node jasmine-runner.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jloveric/SlotFiller.git"
+  },
+  "keywords": [
+    "slot",
+    "filler"
+  ],
+  "author": "John Loverich",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jloveric/SlotFiller/issues"
+  },
+  "homepage": "https://github.com/jloveric/SlotFiller#readme"
+}
