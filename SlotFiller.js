@@ -1,9 +1,10 @@
 "use strict"
 
-let Logger = require('sb/etc/Logger.js')('SlotFiller')
-let Helper = require('sb/etc/Helper.js')
-let similarity = require('sb/phrasex/SentenceSimilarity.js')
-let similarityScore = require('sb/phrasex/SimilarityScore.js')
+let Logger = require('logger-clockmaker')('SlotFiller')
+let Helper = require('helper-clockmaker')
+let ss = require('sentence-similarity')
+let similarity = ss.sentenceSimilarity;
+let similarityScore = ss.similarityScore;
 let deepcopy = require('clone')
 let debug = require('debug')('SlotFiller')
 

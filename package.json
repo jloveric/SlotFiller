@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/jloveric/SlotFiller/issues"
   },
-  "homepage": "https://github.com/jloveric/SlotFiller#readme"
+  "homepage": "https://github.com/jloveric/SlotFiller#readme",
+  "dependencies": {
+    "clone": "^2.1.1",
+    "debug": "^2.6.6",
+    "helper-clockmaker": "^1.0.3",
+    "sentence-similarity": "^1.0.3"
+  }
 }
