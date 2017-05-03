@@ -12,7 +12,10 @@
   },
   "keywords": [
     "slot",
-    "filler"
+    "filler",
+    "word",
+    "alignment",
+    "sentence"
   ],
   "author": "John Loverich",
   "license": "MIT",
