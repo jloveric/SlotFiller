@@ -1,6 +1,6 @@
 "use strict"
 
-let Logger = require('logger-clockmaker')('SlotFiller')
+//let Logger = require('logger-clockmaker')('SlotFiller')
 let Helper = require('helper-clockmaker')
 let ss = require('sentence-similarity')
 let similarity = ss.sentenceSimilarity;

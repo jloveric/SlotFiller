@@ -28,6 +28,10 @@ describe("Testing SlotFiller", function () {
 
 	let slots = slotFiller.computeWildcards(b, a, queryIndex, null)
     console.log(slots)
+
+    expect(slots.wildcards.pronoun).toEqual('my')
+    expect(slots.wildcards.name).toEqual('John Jacob')
+    console.log('finished')
     done();
      
     }, 10000);
