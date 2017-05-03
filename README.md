@@ -1,7 +1,7 @@
 # SlotFiller
 slot-filler is used in combination with sentence-similarity to fill in slots
 
-#Example 1
+# Example 1
 
 ```javascript
 let slotFiller = require('slot-filler')
@@ -27,7 +27,7 @@ so that now the slotFiller has estimated the slots for (pronoun) and
 (name).  Note, the names inside the wildcards (pronoun),(name) are arbitrary,
 the slotFiller would not behave any differently if the names were changed.
 
-#Example 2, reconstruction
+# Example 2, reconstruction
 Given a phrase with slots and a set of slot values, the slot filler can also fill
 in the slots
 
