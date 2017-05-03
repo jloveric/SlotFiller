@@ -1,6 +1,6 @@
 {
   "name": "slot-filler",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Fill in the slots in a phrase template given a matching phrase.",
   "main": "SlotFiller.js",
   "scripts": {
@@ -25,5 +25,9 @@
     "debug": "^2.6.6",
     "helper-clockmaker": "^1.0.3",
     "sentence-similarity": "^1.0.3"
+  },
+  "devDependencies": {
+    "jasmine": "^2.6.0",
+    "jasmine-spec-reporter": "^4.1.0"
   }
 }

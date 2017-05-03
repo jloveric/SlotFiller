@@ -12,21 +12,13 @@ describe("Testing SlotFiller", function () {
 
     it("This should produce the correct wildcards", function (done) {
 
-        let pList = []
-
 	let a = ['Hello', 'my', 'name', 'is', 'John', 'Jacob']
 	let b = ['Hello', '(pronoun)', 'name', 'is', '(name)']
 	let ans = ss.sentenceSimilarity(a,b,stdOpts) 	
 
 	console.log(ans)
 
-    let queryIndex = [];
-
-    for(let i=0; i<a.length; i++) {
-        queryIndex.push({word : a[i], index : ans.matched[i]})
-    }
-
-	let slots = slotFiller.computeWildcards(b, a, queryIndex, null)
+	let slots = slotFiller.getWildcards(b, a, ans.matched, null)
     console.log(slots)
 
     expect(slots.wildcards.pronoun).toEqual('my')

@@ -13,13 +13,9 @@ let a = ['Hello', 'my', 'name', 'is', 'John', 'Jacob']
 let b = ['Hello', '(pronoun)', 'name', 'is', '(name)']
 let ans = ss.sentenceSimilarity(a,b,stdOpts) 	
 
-let queryIndex = [];
+console.log(ans)
 
-for(let i=0; i<a.length; i++) {
-    queryIndex.push({word : a[i], index : ans.matched[i]})
-}
-
-let slots = slotFiller.computeWildcards(b, a, queryIndex, null)
+let slots = slotFiller.getWildcards(b, a, ans.matched, null)
 console.log(slots)
 ```
 gives output

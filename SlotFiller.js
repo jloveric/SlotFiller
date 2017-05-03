@@ -267,6 +267,31 @@ module.exports = {
 	},
 
 
+	//This is deprecated, but used in some of my own code for now...  Use getWildcards instead.
+	computeWildcards(bestMatch, query, queryIndex, keywords) {
+		//find the indexes of the wild cards and order
+		let wildCardIndex = []
+
+		for (let i = 0; i < bestMatch.length; i++) {
+			if (bestMatch[i]) {
+				let res = bestMatch[i].match(Helper.betweenParentheses)
+				if (res) {
+					wildCardIndex.push({ wcIndex: res[1], index: i })
+				}
+			}
+		}
+
+		let simpleIndex = this.computeSeparateWildcards(queryIndex, keywords)
+
+		let fixedIndex = this.fixForNeighboringWildcards(wildCardIndex, simpleIndex)
+		debug('fixedIndex', fixedIndex)
+		let ans = this.closestWildcardMatch(wildCardIndex, fixedIndex)
+		
+		
+		debug('wildcards and score', ans)
+		return ans
+	},
+
 	/**
 	 * Given the best match phrase (bestMatch) return the computed wildcard values
 	 * @param bestMatch is the best matching phrase
@@ -279,8 +304,14 @@ module.exports = {
 	 * @return the list of wildcards as an object with wildcard name
 	 * and wildcard value {name : "john", item : "apple"}
 	 */
-	computeWildcards(bestMatch, query, queryIndex, keywords) {
-		//find the indexes of the wild cards and order
+	getWildcards(bestMatch, query, matchIndex, keywords) {
+		
+		let queryIndex = [];
+
+    for(let i=0; i<query.length; i++) {
+        queryIndex.push({word : query[i], index : matchIndex[i]})
+    }
+		
 		let wildCardIndex = []
 
 		for (let i = 0; i < bestMatch.length; i++) {
