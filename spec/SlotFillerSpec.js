@@ -12,8 +12,8 @@ describe("Testing SlotFiller", function () {
 
     it("This should produce the correct wildcards", function (done) {
 
-	let a = ['Hello', 'my', 'name', 'is', 'John', 'Jacob']
-	let b = ['Hello', '(pronoun)', 'name', 'is', '(name)']
+	let a = ['Hello,', 'my', 'name', 'is', 'John', 'Jacob']
+	let b = ['Hello,', '(pronoun)', 'name', 'is', '(name)']
 	let ans = ss.sentenceSimilarity(a,b,stdOpts) 	
 
 	console.log(ans)
@@ -23,6 +23,20 @@ describe("Testing SlotFiller", function () {
 
     expect(slots.wildcards.pronoun).toEqual('my')
     expect(slots.wildcards.name).toEqual('John Jacob')
+    console.log('finished')
+    done();
+     
+    }, 10000);
+
+    it("Fill in the correct wildcards", function (done) {
+
+	let wc = {pronoun : "your", name : "kai"}
+	let phrase = 'Hello, (pronoun) name is (name)'
+	
+	let res = slotFiller.reconstructPhrase(phrase, wc)
+    console.log(res)
+
+    expect(res.phrase).toEqual('Hello, your name is kai')
     console.log('finished')
     done();
      

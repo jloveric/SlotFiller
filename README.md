@@ -26,3 +26,21 @@ gives output
 so that now the slotFiller has estimated the slots for (pronoun) and
 (name).  Note, the names inside the wildcards (pronoun),(name) are arbitrary,
 the slotFiller would not behave any differently if the names were changed.
+
+#Example 2, reconstruction
+Given a phrase with slots and a set of slot values, the slot filler can also fill
+in the slots
+
+```javascript
+let slotFiller = require('slot-filler')
+
+let wc = {pronoun : "your", name : "kai"}
+let phrase = 'Hello, (pronoun) name is (name)'
+	
+let res = slotFiller.reconstructPhrase(phrase, wc)
+console.log(res)
+```
+produces
+```json
+{ phrase: 'Hello, your name is kai', success: true, score: 2 }
+```
