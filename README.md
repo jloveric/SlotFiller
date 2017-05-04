@@ -1,7 +1,7 @@
 # SlotFiller
 slot-filler is used in combination with sentence-similarity to fill in slots.  Slots are defined using a phrase template such as "What (keyword) is the (item) in?".  The slot-filler can then take a sentence such as "Hi, what aisle is the bacon in?" and fill in the slots keyword="aisle" and item = "bacon".  The slot filler will often work even when the sentence does not exactly match the phrase template including when words are missing, added or misspelled.  A user defined word similarity measure give the user flexibility, one could even include a synonym search in the word similarity measure if desired.  The slot-filler is used as part of the clockmaker bot framework (in the process of release).
 
-# Example 1
+# Example 1, exact match
 
 ```javascript
 let slotFiller = require('slot-filler')
@@ -27,7 +27,29 @@ so that now the slotFiller has estimated the slots for (pronoun) and
 (name).  Note, the names inside the wildcards (pronoun),(name) are arbitrary,
 the slotFiller would not behave any differently if the names were changed.
 
-# Example 2, reconstruction
+# Example 2, inexact match
+The template sentence does not need to exactly match the stated sentence, but the slot-filler
+will try and figure out the correct slots anyway.  This can help you from having to state every
+variation of a given template.
+
+```javascript
+let slotFiller = require('slot-filler')
+let ss = require('sentence-similarity')
+
+let a = ['my', 'is', 'John', 'Jacob']
+let b = ['Hello,', '(pronoun)', 'name', 'is', '(name)']
+let ans = ss.sentenceSimilarity(a,b,stdOpts) 	
+
+let slots = slotFiller.getWildcards(b, a, ans.matched, null)
+console.log(slots)
+```
+produces
+```json
+{ wildcards: { matched: true, pronoun: 'my', name: 'John Jacob' },
+  score: { score: 1, count: 2 } }
+```
+
+# Example 3, reconstruction
 Given a phrase with slots and a set of slot values, the slot filler can also fill
 in the slots
 

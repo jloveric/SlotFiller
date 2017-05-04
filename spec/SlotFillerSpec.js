@@ -42,4 +42,22 @@ describe("Testing SlotFiller", function () {
      
     }, 10000);
 
+    it("Produce the correct wildcards with inexact match", function (done) {
+
+	let a = ['my', 'is', 'John', 'Jacob']
+	let b = ['Hello,', '(pronoun)', 'name', 'is', '(name)']
+	let ans = ss.sentenceSimilarity(a,b,stdOpts) 	
+
+	console.log(ans)
+
+	let slots = slotFiller.getWildcards(b, a, ans.matched, null)
+    console.log(slots)
+
+    expect(slots.wildcards.pronoun).toEqual('my')
+    expect(slots.wildcards.name).toEqual('John Jacob')
+    console.log('finished')
+    done();
+     
+    }, 10000);
+
 });
