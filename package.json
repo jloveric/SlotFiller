@@ -15,7 +15,9 @@
     "filler",
     "word",
     "alignment",
-    "sentence"
+    "sentence",
+    "template",
+    "bot"
   ],
   "author": "John Loverich",
   "license": "MIT",

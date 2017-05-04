@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jloveric/SlotFiller.svg?branch=master)](https://travis-ci.org/jloveric/SlotFiller)
+
 # SlotFiller
 slot-filler is used in combination with sentence-similarity to fill in slots.  Slots are defined using a phrase template such as "What (keyword) is the (item) in?".  The slot-filler can then take a sentence such as "Hi, what aisle is the bacon in?" and fill in the slots keyword="aisle" and item = "bacon".  The slot filler will often work even when the sentence does not exactly match the phrase template including when words are missing, added or misspelled.  A user defined word similarity measure give the user flexibility, one could even include a synonym search in the word similarity measure if desired.  The slot-filler is used as part of the clockmaker bot framework (in the process of release).
 
