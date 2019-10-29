@@ -5,7 +5,7 @@
   "main": "SlotFiller.js",
   "scripts": {
     "test": "node jasmine-runner.js",
-    "pretty": "prettier --write --tab-width 2 \"src/**/*.js\"",
+    "pretty": "prettier --write --tab-width 2 \"**/*.js\"",
     "precommit": "lint-staged && npm test"
   },
   "repository": {
@@ -37,6 +37,7 @@
     "husky": "^3.0.9",
     "jasmine": "^2.6.0",
     "jasmine-spec-reporter": "^4.1.0",
+    "lint-staged": "^9.4.2",
     "prettier": "^1.18.2"
   },
   "husky": {
@@ -45,5 +46,11 @@
       "pre-push": "npm test",
       "...": "..."
     }
-  }
+  },
+  "lint-staged": {
+    "*.js": [
+        "npm run pretty",
+        "git add"
+    ]
+}
 }
