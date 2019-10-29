@@ -59,7 +59,6 @@ module.exports = {
 
 		//clean the word
 
-		//console.log('cleanWord',cleanWord,word)
 		for (let i = 0; i < list.length; i++) {
 			let id = list[i].indexOf(word);
 			if (id != -1) return i;
@@ -93,10 +92,9 @@ module.exports = {
 					if (queryIndex[j].word) {
 						queryIndex[j].word = queryIndex[j].word.replace(Helper.nonAlphaNumeric, '')
 					}
-					//debug('queryIndex[j].word',queryIndex[j].word)
+					
 					let keywordIndex = this.getMatchIndex(queryIndex[j].word.toLowerCase(), keywords)
-					//let keywordIndex = -1;	
-					//console.log("keywordIndex",keywordIndex)
+					
 					if (keywordIndex == -1) {//It's not a keyword so group it.
 						//If the next word is unmatched, it's really two words 'tuna salad'
 						if (queryIndex[j].index == -1) {
@@ -119,8 +117,6 @@ module.exports = {
 				reducedIndex.push(queryIndex[i]);
 			}
 		}
-
-		//console.log(reducedIndex)
 
 		return reducedIndex;
 	},
@@ -329,7 +325,6 @@ module.exports = {
 		debug('fixedIndex', fixedIndex)
 		let ans = this.closestWildcardMatch(wildCardIndex, fixedIndex)
 		
-		
 		debug('wildcards and score', ans)
 		return ans
 	},
@@ -364,19 +359,15 @@ module.exports = {
 	reconstructPhrase(phrase, wildcards) {
 		let tok = phrase.match(Helper.tokenize)
 
-		//debug('tok',tok)
 		let wcMatchCount = 0;
-
 
 		let ans = ''
 		for (let i = 0; i < tok.length; i++) {
 			let res = tok[i].match(Helper.betweenParentheses)
-			//debug('res',res)
-			//console.log('RES',tok[i],res)
+			
 			if (res) {
 				tok[i] = wildcards[res[1]]
-				//debug(res[1],wildcards[res[1]],tok[i])
-				//debug('wildcard value',wildcards.ITEM, tok[i],res[1])
+				
 				if (!tok[i]) {
 					return { phrase: '', success: false, score : 0 }
 				} else {
