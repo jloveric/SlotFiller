@@ -4,7 +4,9 @@
   "description": "Fill in the slots in a phrase template given a matching phrase.",
   "main": "SlotFiller.js",
   "scripts": {
-    "test": "node jasmine-runner.js"
+    "test": "node jasmine-runner.js",
+    "pretty": "prettier --write --tab-width 2 \"src/**/*.js\"",
+    "precommit": "lint-staged && npm test"
   },
   "repository": {
     "type": "git",
@@ -32,7 +34,16 @@
     "sentence-similarity": "^1.0.3"
   },
   "devDependencies": {
+    "husky": "^3.0.9",
     "jasmine": "^2.6.0",
-    "jasmine-spec-reporter": "^4.1.0"
+    "jasmine-spec-reporter": "^4.1.0",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test",
+      "pre-push": "npm test",
+      "...": "..."
+    }
   }
 }
